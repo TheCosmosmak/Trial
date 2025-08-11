@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush Kumar | Stock Market Analyst & Future World Traveller</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Three.js library for 3D graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a1a; }
+        .gradient-text { background: linear-gradient(90deg, #c084fc, #60a5fa); -webkit-background-clip: text; color: transparent; }
+        
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .movie-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .movie-card:hover { transform: translateY(-10px); box-shadow: 0 20px 25px -5px rgba(192, 132, 252, 0.2), 0 10px 10px -5px rgba(96, 165, 250, 0.1); }
+
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
+        .hero-content { position: relative; z-index: 1; }
+
+        .modal { transition: opacity 0.25s ease; }
+        .modal-content { transition: transform 0.25s ease; }
+        
+        .loader { border: 4px solid #374151; border-top: 4px solid #a855f7; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        #world-map-canvas { width: 100%; height: 100%; display: block; cursor: grab; }
+        #world-map-canvas.grabbing { cursor: grabbing; }
+        
+        .glass-effect { background: rgba(17, 24, 39, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        
+        /* Style for the new AI buttons */
+        .ai-action-btn {
+            background-color: rgba(139, 92, 246, 0.2); /* purple-500 with opacity */
+            border: 1px solid rgba(139, 92, 246, 0.5);
+            transition: all 0.2s ease-in-out;
+            font-size: 0.75rem; /* text-xs */
+            padding: 0.25rem 0.5rem; /* py-1 px-2 */
+            border-radius: 0.5rem; /* rounded-lg */
+            margin-left: 0.75rem; /* ml-3 */
+        }
+        .ai-action-btn:hover {
+            background-color: rgba(139, 92, 246, 0.4);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-gray-900 bg-opacity-70 backdrop-blur-md px-6 py-4 flex justify-between items-center z-50 shadow-lg border-b border-gray-800">
+        <a href="#hero" class="font-black text-2xl gradient-text">PK</a>
+        <div id="nav-links" class="hidden md:flex flex-col md:flex-row absolute md:static top-16 left-0 w-full md:w-auto bg-gray-800 md:bg-transparent shadow-lg md:shadow-none p-4 md:p-0 space-y-4 md:space-y-0 md:space-x-6 text-gray-300 font-semibold">
+            <a href="#about" class="hover:text-purple-400 transition-colors nav-link">About</a>
+            <a href="#cosmos-ai" class="hover:text-purple-400 transition-colors nav-link">The Cosmos</a>
+            <a href="#market-pulse" class="hover:text-purple-400 transition-colors nav-link">Market Pulse</a>
+            <a href="#ai-image-studio" class="hover:text-purple-400 transition-colors nav-link">Image Studio</a>
+            <a href="#mindset" class="hover:text-purple-400 transition-colors nav-link">Mindset</a>
+            <a href="#quotes" class="hover:text-purple-400 transition-colors nav-link">Words I Live By</a>
+            <a href="#world-map" class="hover:text-purple-400 transition-colors nav-link">World</a>
+            <a href="#skills" class="hover:text-purple-400 transition-colors nav-link">Skills</a>
+            <a href="#cinema" class="hover:text-purple-400 transition-colors nav-link">Cinema</a>
+        </div>
+        <div class="md:hidden">
+            <button id="hamburger-btn" class="text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-gray-900 relative">
+        <div id="particles-js"></div>
+        <div class="hero-content" data-aos="zoom-in-up">
+            <h1 class="text-5xl md:text-7xl font-bold">Piyush Kumar</h1>
+            <p class="mt-4 text-xl md:text-2xl text-gray-300">Stock Market Analyst | Future World Traveller 🌍</p>
+            <p class="mt-2 italic text-gray-400">"I don't follow trends. I create my own path."</p>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="py-20 px-6 md:px-20 bg-gray-800" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">About Me</h2>
+            <p class="mt-4 text-lg text-gray-300 leading-relaxed text-center">
+                Obsessed with the latest AI breakthroughs & cutting-edge tech. I live alone most of the time — not a fan of people who waste their potential. My brain? Always running at full speed, overthinking everything. My goal? By my early 20s, travel the world and see every corner of this planet.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Cosmos AI Section -->
+    <section id="cosmos-ai" class="py-20 px-6 md:px-20 bg-gray-900" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl font-bold gradient-text">Consult The Cosmos</h2>
+            <p class="mt-4 text-lg text-gray-400">Your personal AI assistant. Ask me anything.</p>
+            <div class="mt-8 glass-effect p-6 rounded-lg shadow-2xl">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" id="cosmos-prompt" placeholder="e.g., 'What are some interesting places to visit in Assam?'" class="w-full p-4 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-shadow border border-gray-700">
+                    <button id="ask-cosmos-btn" class="px-8 py-4 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg font-bold text-lg hover:from-purple-600 hover:to-indigo-600 transition-all transform hover:scale-105 whitespace-nowrap">✨ Ask The Cosmos</button>
+                </div>
+                <div id="cosmos-result" class="mt-6 text-left"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Pulse AI Section -->
+    <section id="market-pulse" class="py-20 px-6 md:px-20 bg-gray-800" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl font-bold gradient-text">Market Pulse</h2>
+            <p class="mt-4 text-lg text-gray-400">Enter a stock ticker to get a professional, AI-powered analysis.</p>
+            <div class="mt-8 glass-effect p-6 rounded-lg shadow-2xl">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" id="stock-ticker-prompt" placeholder="e.g., 'AAPL', 'TSLA', 'GOOGL'" class="w-full p-4 rounded-lg bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-shadow border border-gray-700 uppercase">
+                    <button id="get-analysis-btn" class="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg font-bold text-lg hover:from-indigo-600 hover:to-purple-600 transition-all transform hover:scale-105 whitespace-nowrap">✨ Get Analysis</button>
+                </div>
+                <div id="stock-analysis-result" class="mt-6 text-left"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Image Studio Section -->
+    <section id="ai-image-studio" class="py-20 px-6 md:px-20 bg-gray-900" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-4xl font-bold gradient-text">AI Image Studio</h2>
+            <p class="mt-4 text-lg text-gray-400">Describe an image and let the AI bring it to life in a cool, animated style.</p>
+            <div class="mt-8 glass-effect p-6 rounded-lg shadow-2xl">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input type="text" id="image-prompt" placeholder="e.g., 'A futuristic city skyline at night, glowing neon'" class="w-full p-4 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-shadow border border-gray-700">
+                    <button id="generate-image-btn" class="px-8 py-4 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg font-bold text-lg hover:from-purple-600 hover:to-indigo-600 transition-all transform hover:scale-105 whitespace-nowrap">🎨 Generate</button>
+                </div>
+                <div id="image-result-container" class="mt-6 p-4 bg-gray-900/50 rounded-lg min-h-[300px] flex items-center justify-center border border-gray-700">
+                    <p id="image-placeholder" class="text-gray-500">Your generated image will appear here</p>
+                    <img id="generated-image" src="" alt="AI Generated Image" class="hidden max-w-full max-h-[500px] rounded-lg">
+                    <div id="image-loader" class="hidden loader"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- A Powerful Message Section -->
+    <section id="mindset" class="py-20 px-6 md:px-20 bg-gray-800" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 gradient-text">A Shift in Perspective</h2>
+            <p class="text-lg text-gray-400 mb-10">This video contains a message I find incredibly powerful. It's worth your time.</p>
+            <div class="video-container mx-auto max-w-4xl" data-aos="fade-up" data-aos-delay="200">
+                <iframe src="https://www.youtube.com/embed/1i9kcBHX2Nw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Words I Live By -->
+    <section id="quotes" class="py-20 px-6 md:px-20 bg-gray-900" data-aos="fade-up">
+        <h2 class="text-4xl font-bold text-center mb-12 text-purple-300">Words I Live By</h2>
+        <div id="quotes-container" class="max-w-3xl mx-auto space-y-6 text-lg italic text-center text-gray-300">
+            <!-- Quotes will be injected here by JS -->
+        </div>
+    </section>
+
+    <!-- World Map Section -->
+    <section id="world-map" class="py-20 px-6 md:px-20 bg-gray-800" data-aos="fade-up">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 gradient-text">Explore My World</h2>
+            <p class="text-lg text-gray-400 mb-8">A realistic simulation of our planet. Drag to explore.</p>
+            <div class="w-full h-96 md:h-[500px] bg-transparent rounded-lg shadow-2xl relative" id="world-map-container">
+                <canvas id="world-map-canvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Hobbies -->
+    <section id="skills" class="py-20 px-6 md:px-20 bg-gray-900" data-aos="fade-up">
+        <h2 class="text-4xl font-bold text-center mb-12 text-indigo-400">Skills & Hobbies</h2>
+        <div class="mt-6 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="p-6 glass-effect rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold text-purple-400">General Skills</h3>
+                <ul class="mt-4 space-y-2 list-disc list-inside text-gray-300">
+                    <li>Solves Rubik’s Cube under 35 seconds</li>
+                    <li>Intermediate Chess Player</li>
+                    <li>Can Skateboard</li>
+                    <li>Rope Skipping Master</li>
+                    <li>Geography Expert</li>
+                </ul>
+            </div>
+            <div class="p-6 glass-effect rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold text-indigo-400">Hobbies</h3>
+                <ul class="mt-4 space-y-2 list-disc list-inside text-gray-300">
+                    <li>Watching Great Movies & TV Shows</li>
+                    <li>Travelling</li>
+                    <li>Swimming</li>
+                    <li>Learning Earth's Geography</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essential Cinema Section -->
+    <section id="cinema" class="py-20 px-6 md:px-20 bg-gray-800" data-aos="fade-up">
+        <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Essential Cinema</h2>
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Movie Cards will be dynamically generated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-500 bg-gray-900 border-t border-gray-800">
+        © 2025 Piyush Kumar | Built with ❤️ and too much caffeine
+    </footer>
+
+    <!-- Universal Modal -->
+    <div id="ai-modal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-[100] opacity-0 pointer-events-none">
+        <div class="modal-content glass-effect rounded-lg shadow-2xl max-w-2xl w-full p-8 transform scale-95">
+            <h3 id="modal-title" class="text-2xl font-bold gradient-text mb-4"></h3>
+            <div id="modal-body" class="text-gray-300 max-h-[70vh] overflow-y-auto"></div>
+            <button id="modal-close" class="mt-6 px-6 py-2 bg-indigo-500 rounded-lg hover:bg-indigo-600 transition">Close</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module">
+        // ===================================================================================
+        // --- API KEY IS ADDED ---
+        // ===================================================================================
+        // The AI features on this site are now LIVE.
+        // ===================================================================================
+        const API_KEY = "AIzaSyDujzX86U94iuuN-8aL9MB7I_jx-RZrlzI";
+
+        // --- INITIALIZATION ---
+        AOS.init({ duration: 800, once: true });
+
+        particlesJS('particles-js', {
+            "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#4a5568", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "out_mode": "out" } },
+            "interactivity": { "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" } } },
+            "retina_detect": true
+        });
+
+        // --- MOBILE NAVIGATION ---
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navLinks = document.getElementById('nav-links');
+        const navLinkItems = document.querySelectorAll('.nav-link');
+        hamburgerBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('hidden');
+        });
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) { // md breakpoint
+                    navLinks.classList.add('hidden');
+                }
+            });
+        });
+
+        // --- LIVE AI API FUNCTIONS ---
+        async function callGemini(payload, maxRetries = 3) {
+            if (!API_KEY) throw new Error("API_KEY is missing.");
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+            return await makeApiCall(apiUrl, payload, maxRetries);
+        }
+
+        async function generateImage(prompt, maxRetries = 3) {
+            if (!API_KEY) throw new Error("API_KEY is missing.");
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${API_KEY}`;
+            const payload = {
+                contents: [{
+                    parts: [{ text: prompt }]
+                }],
+                generationConfig: {
+                    // FIX: The model requires both TEXT and IMAGE modalities to be requested.
+                    responseModalities: ['TEXT', 'IMAGE']
+                },
+            };
+            return await makeApiCall(apiUrl, payload, maxRetries);
+        }
+
+        async function makeApiCall(apiUrl, payload, maxRetries) {
+            let attempt = 0;
+            while (attempt < maxRetries) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) {
+                         const errorBody = await response.json();
+                         console.error("API Error Response:", errorBody);
+                         throw new Error(`API request failed with status ${response.status}: ${errorBody.error.message}`);
+                    }
+                    const result = await response.json();
+                    if (!result) throw new Error("Empty API response.");
+                    return result;
+                } catch (error) {
+                    console.error(`Attempt ${attempt + 1} failed:`, error);
+                    attempt++;
+                    if (attempt >= maxRetries) {
+                        throw new Error("API request failed after multiple retries. Please check your API key and network connection.");
+                    }
+                    const delay = Math.pow(2, attempt) * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+
+
+        // --- MODAL ---
+        const modal = document.getElementById('ai-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const modalCloseBtn = document.getElementById('modal-close');
+
+        function showModal(title, body) {
+            modalTitle.innerHTML = title;
+            modalBody.innerHTML = body;
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('.modal-content').classList.remove('scale-95');
+        }
+        function hideModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('.modal-content').classList.add('scale-95');
+        }
+        modalCloseBtn.addEventListener('click', hideModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
+
+        // --- ESSENTIAL CINEMA SECTION ---
+        const movies = [
+            { title: 'The Shawshank Redemption', poster: 'https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Forrest Gump', poster: 'https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'The Pursuit of Happyness', poster: 'https://m.media-amazon.com/images/M/MV5BMTQ5NjQ0NDI3NF5BMl5BanBnXkFtZTcwNDI0MjEzMw@@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Fight Club', poster: 'https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'The Green Mile', poster: 'https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Pulp Fiction', poster: 'https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'City of God', poster: 'https://m.media-amazon.com/images/M/MV5BOTMwYjc5ZmItYTFjZC00ZGQ3LTlkNTMtMjZiNTZlMWQzNzI5XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg' },
+            { title: 'Se7en', poster: 'https://m.media-amazon.com/images/M/MV5BOTUwODM5MTctZjczMi00OTk4LTg3NWUtNmVhMTAzNTNjYjcyXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg' }
+        ];
+        const cinemaContainer = document.querySelector('#cinema .grid');
+        movies.forEach((movie, index) => {
+            const card = document.createElement('div');
+            card.className = 'movie-card bg-gray-900 rounded-lg overflow-hidden shadow-2xl flex flex-col';
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', (index % 4) * 100);
+            card.innerHTML = `
+                <img src="${movie.poster}" alt="${movie.title} Poster" class="w-full h-96 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/400x600/111827/FFFFFF?text=Poster+Not+Found';">
+                <div class="p-4 flex flex-col flex-grow">
+                    <h3 class="font-bold text-lg flex-grow">${movie.title}</h3>
+                    <button class="mt-4 w-full text-sm px-4 py-2 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg font-semibold hover:from-purple-600 hover:to-indigo-600 transition-all transform hover:scale-105 movie-analysis-btn" data-movie-title="${movie.title}">
+                        ✨ Get AI Analysis
+                    </button>
+                </div>
+            `;
+            cinemaContainer.appendChild(card);
+        });
+        cinemaContainer.addEventListener('click', async (e) => {
+            if (e.target.classList.contains('movie-analysis-btn')) {
+                const movieTitle = e.target.dataset.movieTitle;
+                showModal(`Analyzing ${movieTitle}...`, '<div class="loader mx-auto"></div>');
+                const prompt = `Provide a deep, philosophical analysis of the movie "${movieTitle}". Discuss its central themes, character arcs, and lasting impact on cinema. Keep the analysis concise, insightful, and under 200 words.`;
+                const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+                try {
+                    const result = await callGemini(payload);
+                    const text = result.candidates[0].content.parts[0].text;
+                    showModal(`Analysis of ${movieTitle}`, text.replace(/\n/g, '<br>'));
+                } catch (error) {
+                    console.error(error);
+                    showModal('Error', `Could not generate analysis. ${error.message}`);
+                }
+            }
+        });
+
+        // --- WORDS I LIVE BY SECTION (AI Philosophy Explainer) ---
+        const quotes = [
+            { quote: "Stay hungry, stay foolish.", author: "Steve Jobs" },
+            { quote: "Your time is limited, so don’t waste it living someone else’s life.", author: "Steve Jobs" },
+            { quote: "Not all those who wander are lost.", author: "J.R.R. Tolkien" },
+            { quote: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" }
+        ];
+        const quotesContainer = document.getElementById('quotes-container');
+        quotes.forEach((q, index) => {
+            const p = document.createElement('p');
+            p.setAttribute('data-aos', index % 2 === 0 ? 'fade-left' : 'fade-right');
+            p.innerHTML = `
+                <span>"${q.quote}" – ${q.author}</span>
+                <button class="ai-action-btn elaborate-quote-btn" data-quote="${q.quote}" data-author="${q.author}">✨ Elaborate</button>
+            `;
+            quotesContainer.appendChild(p);
+        });
+        quotesContainer.addEventListener('click', async (e) => {
+            if (e.target.classList.contains('elaborate-quote-btn')) {
+                const quote = e.target.dataset.quote;
+                const author = e.target.dataset.author;
+                showModal(`Elaborating on "${quote}"`, '<div class="loader mx-auto"></div>');
+                const prompt = `Please provide a deep, philosophical elaboration on the quote "${quote}" by ${author}. Explain its meaning, its implications for personal growth and mindset, and why it is considered powerful. Format the response in clear paragraphs.`;
+                const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+                try {
+                    const result = await callGemini(payload);
+                    const text = result.candidates[0].content.parts[0].text;
+                    showModal(`On "${quote}"`, text.replace(/\n/g, '<br><br>'));
+                } catch (error) {
+                    console.error(error);
+                    showModal('Error', `Could not generate elaboration. ${error.message}`);
+                }
+            }
+        });
+
+        // --- WORLD MAP SIMULATION ---
+        const worldMapContainer = document.getElementById('world-map-container');
+        const canvas = document.getElementById('world-map-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(50, worldMapContainer.clientWidth / worldMapContainer.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+        renderer.setSize(worldMapContainer.clientWidth, worldMapContainer.clientHeight);
+        camera.position.set(0, 0, 8);
+
+        // Lights
+        scene.add(new THREE.AmbientLight(0xcccccc, 0.6));
+        const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        dirLight.position.set(5, 5, 5);
+        scene.add(dirLight);
+
+        // Starfield
+        const starVertices = [];
+        for (let i = 0; i < 10000; i++) {
+            const x = THREE.MathUtils.randFloatSpread(2000);
+            const y = THREE.MathUtils.randFloatSpread(2000);
+            const z = THREE.MathUtils.randFloatSpread(2000);
+            starVertices.push(x, y, z);
+        }
+        const starGeometry = new THREE.BufferGeometry();
+        starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3));
+        const starMaterial = new THREE.PointsMaterial({ color: 0x888888, size: 0.7 });
+        const stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+
+        // Earth Globe Group
+        const globeGroup = new THREE.Group();
+        scene.add(globeGroup);
+        
+        // Texture Loader
+        const textureLoader = new THREE.TextureLoader();
+
+        // Earth Mesh
+        const earthGeometry = new THREE.SphereGeometry(3, 64, 64);
+        const earthMaterial = new THREE.MeshPhongMaterial({
+            map: textureLoader.load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthmap1k.jpg'),
+            bumpMap: textureLoader.load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthbump1k.jpg'),
+            bumpScale: 0.05,
+            specularMap: textureLoader.load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/earthspec1k.jpg'),
+            specular: new THREE.Color('grey')
+        });
+        const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+        globeGroup.add(earth);
+
+        // Cloud Mesh
+        const cloudGeometry = new THREE.SphereGeometry(3.05, 64, 64);
+        const cloudMaterial = new THREE.MeshPhongMaterial({
+            map: textureLoader.load('https://s3-us-west-2.amazonaws.com/s.cdpn.io/141228/cloudmap.png'),
+            transparent: true,
+            opacity: 0.4
+        });
+        const clouds = new THREE.Mesh(cloudGeometry, cloudMaterial);
+        globeGroup.add(clouds);
+
+        // Interaction
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+
+        function onPointerDown(event) {
+            isDragging = true;
+            canvas.classList.add('grabbing');
+            previousMousePosition = { x: event.clientX || event.touches[0].clientX, y: event.clientY || event.touches[0].clientY };
+        }
+
+        function onPointerMove(event) {
+            const currentX = event.clientX || (event.touches ? event.touches[0].clientX : 0);
+            const currentY = event.clientY || (event.touches ? event.touches[0].clientY : 0);
+            if (isDragging) {
+                const deltaX = currentX - previousMousePosition.x;
+                const deltaY = currentY - previousMousePosition.y;
+                globeGroup.rotation.y += deltaX * 0.005;
+                globeGroup.rotation.x += deltaY * 0.005;
+                previousMousePosition = { x: currentX, y: currentY };
+            }
+        }
+
+        function onPointerUp() { isDragging = false; canvas.classList.remove('grabbing'); }
+
+        canvas.addEventListener('pointerdown', onPointerDown);
+        window.addEventListener('pointermove', onPointerMove);
+        window.addEventListener('pointerup', onPointerUp);
+        canvas.addEventListener('touchstart', onPointerDown, { passive: true });
+        window.addEventListener('touchmove', onPointerMove);
+        window.addEventListener('touchend', onPointerUp);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            if (!isDragging) {
+                globeGroup.rotation.y += 0.0005;
+                clouds.rotation.y += 0.0006; // Rotate clouds slightly faster
+            }
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = worldMapContainer.clientWidth / worldMapContainer.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(worldMapContainer.clientWidth, worldMapContainer.clientHeight);
+        });
+
+        // --- THE COSMOS AI SECTION ---
+        const cosmosPromptInput = document.getElementById('cosmos-prompt');
+        const askCosmosBtn = document.getElementById('ask-cosmos-btn');
+        const cosmosResultContainer = document.getElementById('cosmos-result');
+
+        askCosmosBtn.addEventListener('click', async () => {
+            const promptText = cosmosPromptInput.value.trim();
+            if (!promptText) {
+                cosmosResultContainer.innerHTML = `<p class="text-red-400">Sir, a query is required to engage the Cosmos.</p>`;
+                return;
+            }
+            askCosmosBtn.disabled = true;
+            askCosmosBtn.innerHTML = '<div class="loader mx-auto h-5 w-5"></div>';
+            cosmosResultContainer.innerHTML = '';
+            
+            const prompt = `You are 'The Cosmos', a helpful and creative AI assistant. Be aware that the current date is August 11, 2025, and the user is located in Guwahati, Assam, India. Use this context to provide a relevant, clear, and friendly answer. Do not use jargon. User's question: "${promptText}"`;
+            
+            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+
+            try {
+                const result = await callGemini(payload);
+                const text = result.candidates[0].content.parts[0].text;
+                cosmosResultContainer.innerHTML = `<div class="bg-gray-900 p-6 rounded-lg shadow-lg border border-gray-700"><p>${text.replace(/\n/g, '<br>')}</p></div>`;
+
+            } catch (error) {
+                console.error("Cosmos AI Error:", error);
+                cosmosResultContainer.innerHTML = `<p class="text-red-400">Apologies, sir. There seems to be some cosmic interference. ${error.message}</p>`;
+            } finally {
+                askCosmosBtn.disabled = false;
+                askCosmosBtn.innerHTML = '✨ Ask The Cosmos';
+            }
+        });
+        
+        // --- MARKET PULSE AI SECTION ---
+        const stockTickerInput = document.getElementById('stock-ticker-prompt');
+        const getAnalysisBtn = document.getElementById('get-analysis-btn');
+        const stockAnalysisResultContainer = document.getElementById('stock-analysis-result');
+
+        getAnalysisBtn.addEventListener('click', async () => {
+            const ticker = stockTickerInput.value.trim().toUpperCase();
+            if (!ticker) {
+                stockAnalysisResultContainer.innerHTML = `<p class="text-red-400">A stock ticker is required for analysis.</p>`;
+                return;
+            }
+
+            getAnalysisBtn.disabled = true;
+            getAnalysisBtn.innerHTML = '<div class="loader mx-auto h-5 w-5"></div>';
+            stockAnalysisResultContainer.innerHTML = '';
+
+            const prompt = `You are 'Market Pulse', a professional financial analyst AI. Provide a detailed yet concise analysis for the stock ticker "${ticker}". Your analysis should be structured for a knowledgeable investor and based on your general knowledge. **Do not claim to have real-time information.** The goal is to provide a fundamental overview, not live financial advice.
+
+Include the following sections:
+1.  **Company Overview:** Briefly describe the company and its business.
+2.  **General Performance & News Summary:** Summarize the company's general performance and notable news based on your training data.
+3.  **Key Financial Metrics:** Highlight important historical metrics (e.g., P/E Ratio, EPS, Revenue Growth).
+4.  **General Outlook:** Provide a summary of the general outlook, mentioning potential catalysts and risks based on historical data.
+
+The response should be formatted as clean HTML using Tailwind CSS classes for styling. **Crucially, ensure all text has a light color (e.g., class="text-gray-300") for readability on a dark background.** Use headings (e.g., <h4 class="font-bold text-lg text-purple-400 mt-4">) for each section. Do not include <html> or <body> tags.`;
+
+            const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
+
+            try {
+                const result = await callGemini(payload);
+                let text = result.candidates[0].content.parts[0].text;
+                text = text.replace(/^```html\s*|```$/g, ''); // Strip markdown code block fences
+                stockAnalysisResultContainer.innerHTML = `<div class="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700">${text}</div>`;
+            } catch (error) {
+                console.error("Market Pulse AI Error:", error);
+                stockAnalysisResultContainer.innerHTML = `<p class="text-red-400">Could not retrieve analysis for ${ticker}. The ticker might be invalid. ${error.message}</p>`;
+            } finally {
+                getAnalysisBtn.disabled = false;
+                getAnalysisBtn.innerHTML = '✨ Get Analysis';
+            }
+        });
+
+        // --- AI IMAGE STUDIO SECTION ---
+        const imagePromptInput = document.getElementById('image-prompt');
+        const generateImageBtn = document.getElementById('generate-image-btn');
+        const imageResultContainer = document.getElementById('image-result-container');
+        const generatedImage = document.getElementById('generated-image');
+        const imagePlaceholder = document.getElementById('image-placeholder');
+        const imageLoader = document.getElementById('image-loader');
+
+        generateImageBtn.addEventListener('click', async () => {
+            const userPrompt = imagePromptInput.value.trim();
+            if (!userPrompt) {
+                imagePlaceholder.textContent = "Please enter a description for the image.";
+                return;
+            }
+
+            generateImageBtn.disabled = true;
+            imagePlaceholder.classList.add('hidden');
+            generatedImage.classList.add('hidden');
+            imageLoader.classList.remove('hidden');
+
+            const fullPrompt = `Create a cool and attractive image in a vibrant, animated, anime-inspired style. The image should have dynamic lighting and a high-quality, polished look. The user wants to see: "${userPrompt}"`;
+
+            try {
+                const result = await generateImage(fullPrompt);
+                const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
+
+                if (base64Data) {
+                    generatedImage.src = `data:image/png;base64,${base64Data}`;
+                    generatedImage.classList.remove('hidden');
+                } else {
+                    if (result?.candidates?.[0]?.finishReason === 'SAFETY') {
+                         throw new Error("Image generation was blocked for safety reasons. Please try a different prompt.");
+                    }
+                    throw new Error("Image data not found in API response.");
+                }
+            } catch (error) {
+                console.error("Image Generation Error:", error);
+                imagePlaceholder.textContent = `Sorry, could not generate image. ${error.message}`;
+                imagePlaceholder.classList.remove('hidden');
+            } finally {
+                generateImageBtn.disabled = false;
+                imageLoader.classList.add('hidden');
+            }
+        });
+
+    </script>
+</body>
+</html>
