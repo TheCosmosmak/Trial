@@ -24,55 +24,49 @@
         <a href="index.html" class="logo-icon" aria-label="Home">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8h5z"/></svg>
         </a>
-        <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
-            <a href="animejs-replica.html">Showcase</a>
+     <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="ai-oracle.html">AI Oracle</a>
+            <a href="koi-pond.html">Koi Pond</a>
             <a href="climate-manga.html">Manga</a>
-            <a href="azuki-world.html">Gallery</a>
             <a href="steve-jobs-mindset.html">Mindset</a>
         </div>
     </nav>
 
     <main class="home-main-v2">
-        <section class="hero-v2">
-            <div class="hero-v2-content">
-                <div class="profile-container">
-                    <img src="https://picsum.photos/seed/piyush-profile/200/200" alt="Piyush Kumar Profile Picture">
-                    <h1 class="japanese-title">道</h1>
-                </div>
-                <div class="hero-v2-text">
-                    <h2 class="name-v2">PIYUSH KUMAR</h2>
-                    <p class="bio-v2">Obsessed with AI breakthroughs & cutting-edge tech. My brain? Always running at full speed. My goal? Travel the world and see every corner of this planet. I don't follow trends. I create my own path.</p>
-                </div>
-            </div>
-             <div class="scroll-indicator-v2">
-                <span>SCROLL</span>
-            </div>
-        </section>
+        <section class="hero-v3">
+            <div class="hero-background"></div>
+            <div class="hero-overlay"></div>
 
-        <section class="spacer-v2"></section>
-
-        <section class="katana-section">
-            <div class="katana-container">
-                <svg class="katana-svg" viewBox="0 0 400 100">
+            <div id="katana-particles"></div>
+            
+            <div class="katana-hero-container">
+                <svg class="katana-svg" viewBox="0 0 500 100">
                     <defs>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                             <feMerge>
                                 <feMergeNode in="coloredBlur"/>
                                 <feMergeNode in="SourceGraphic"/>
                             </feMerge>
                         </filter>
+                         <linearGradient id="bladeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#d1d5db; stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ffffff; stop-opacity:1" />
+                        </linearGradient>
                     </defs>
-                    <path class="katana-blade" d="M0 50 H350 L380 40 L350 50 L380 60 Z" fill="white"/>
-                    <rect class="katana-guard" x="0" y="40" width="15" height="20" fill="#333"/>
+                    <path class="katana-blade" d="M0 50 H450 L480 40 L450 50 L480 60 Z" fill="url(#bladeGradient)"/>
+                    <rect class="katana-guard" x="0" y="40" width="15" height="20" fill="#222"/>
                 </svg>
             </div>
-            <div id="katana-particles"></div>
-            <h3 class="katana-text">THE BLADE IS THE SOUL</h3>
+
+            <div class="hero-v3-content">
+                <h1 class="japanese-title">道</h1>
+                <h2 class="name-v2">PIYUSH KUMAR</h2>
+                <p class="bio-v2">Obsessed with AI breakthroughs & cutting-edge tech. My brain? Always running at full speed. My goal? Travel the world and see every corner of this planet. I don't follow trends. I create my own path.</p>
+            </div>
         </section>
 
-        <section class="spacer-v2 final"></section>
     </main>
     
     <script src="assets/main.js"></script>
