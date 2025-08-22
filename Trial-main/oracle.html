@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PK | The AI Oracle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&family=Goudy+Trajan:wght@400&family=Silkscreen&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="oracle-body">
+    <div id="oracle-grid-bg"></div>
+    <header class="main-header">
+        <a href="index.html" class="logo-icon" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 7L12 12L22 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22V12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        <nav class="main-nav" id="main-nav">
+            <a href="index.html">Home</a><a href="oracle.html" class="active">AI Oracle</a><a href="manga.html">Manga</a><a href="insights.html">Insights</a><a href="ai_innovations.html">AI Innovations</a><a href="timelapse.html">Timelapse</a><a href="mindset.html">Mindset</a>
+        </nav>
+    </header>
+
+    <main class="oracle-main">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>AI ORACLE [v1.5]</h2>
+                <span class="status-light"></span><span class="status-text">ONLINE</span>
+            </div>
+            <div class="chat-messages" id="chat-messages"></div>
+            <div class="chat-input-area">
+                <div class="input-wrapper">
+                    <input type="text" id="chat-input" placeholder="Ask a question..." autocomplete="off">
+                    <div class="glowing-border"></div>
+                </div>
+                <button id="send-button" aria-label="Send Message"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/main.js"></script>
+</body>
+</html>
