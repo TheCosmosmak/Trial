@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Future of AI: Innovations on the Horizon</title>
+    <title>PK | AI Innovations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&family=Goudy+Trajan:wght@400&family=Silkscreen&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         /* General Styling */
         :root {
@@ -14,70 +19,6 @@
             --card-bg: rgba(255, 255, 255, 0.05);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem 0;
-            z-index: 1000;
-            background: rgba(10, 10, 35, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 2rem;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Hero Section */
         #hero {
             height: 100vh;
             display: flex;
@@ -90,6 +31,9 @@
         #hero .container {
             position: relative;
             z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         #hero h1 {
@@ -122,7 +66,6 @@
             box-shadow: 0 10px 20px rgba(0, 245, 160, 0.2);
         }
 
-        /* Particle background */
         #particles-js {
             position: absolute;
             width: 100%;
@@ -132,7 +75,6 @@
             z-index: 1;
         }
         
-        /* Section Styling */
         section {
             padding: 6rem 0;
         }
@@ -144,7 +86,6 @@
             color: var(--accent-color);
         }
 
-        /* Innovations Section */
         .innovations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -198,7 +139,6 @@
             color: var(--primary-color);
         }
 
-        /* Timeline Section */
         .timeline {
             position: relative;
             max-width: 1200px;
@@ -255,16 +195,20 @@
             border-radius: 6px;
         }
 
-        /* Future Section */
         #future p {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
         
-        /* AI Insights Section */
         #ai-insights {
             text-align: center;
+        }
+
+        #ai-insights .container {
+             max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         #ai-insights textarea {
@@ -293,7 +237,6 @@
             min-height: 50px;
         }
 
-        /* Modal Styling */
         .modal {
             display: none;
             position: fixed;
@@ -337,29 +280,25 @@
             white-space: pre-wrap;
         }
 
-        /* Footer */
         footer {
             background: var(--secondary-color);
             padding: 2rem 0;
             text-align: center;
         }
-
+         footer .container {
+             max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="insights-body">
 
-    <header>
-        <nav class="container">
-            <div class="logo">AI.Future</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#innovations">Innovations</a></li>
-                <li><a href="#timeline">Timeline</a></li>
-                <li><a href="#ai-insights">Ask AI</a></li>
-                <li><a href="#future">Future</a></li>
-            </ul>
+    <header class="main-header">
+        <a href="index.html" class="logo-icon" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 7L12 12L22 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22V12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        <nav class="main-nav" id="main-nav">
+            <a href="index.html">Home</a><a href="oracle.html">AI Oracle</a><a href="manga.html">Manga</a><a href="insights.html">Insights</a><a href="ai_innovations.html" class="active">AI Innovations</a><a href="timelapse.html">Timelapse</a><a href="mindset.html">Mindset</a>
         </nav>
     </header>
 
@@ -477,7 +416,8 @@
             <p>&copy; 2025 AI.Future. All Rights Reserved.</p>
         </div>
     </footer>
-
+    
+    <script src="assets/main.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // Particles.js configuration
