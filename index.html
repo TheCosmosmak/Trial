@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush Kumar | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&family=Goudy+Trajan:wght@400&family=Silkscreen&family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body class="home-body-v2">
+    <header class="main-header">
+        <a href="index.html" class="logo-icon" aria-label="Home">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 7L12 12L22 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22V12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="nav-toggle" id="nav-toggle"><span></span><span></span><span></span></div>
+        <nav class="main-nav" id="main-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="oracle.html">AI Oracle</a>
+            <a href="manga.html">Manga</a>
+            <a href="insights.html">Insights</a>
+            <a href="ai_innovations.html">AI Innovations</a>
+            <a href="timelapse.html">Timelapse</a>
+            <a href="mindset.html">Mindset</a>
+        </nav>
+    </header>
+
+    <main class="home-main-v2">
+        <section class="hero-v3">
+            <div class="hero-background"></div>
+            <div class="hero-overlay"></div>
+            <div id="katana-particles"></div>
+            
+            <div class="katana-hero-container">
+                <svg class="katana-svg" viewBox="0 0 500 100">
+                    <defs>
+                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                         <linearGradient id="bladeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#d1d5db; stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ffffff; stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path class="katana-blade" d="M0 50 H450 L480 40 L450 50 L480 60 Z" fill="url(#bladeGradient)"/>
+                    <rect class="katana-guard" x="0" y="40" width="15" height="20" fill="#222"/>
+                </svg>
+            </div>
+
+            <div class="hero-v3-content">
+                <h1 class="japanese-title">道</h1>
+                <h2 class="name-v2">PIYUSH KUMAR</h2>
+                <p class="bio-v2">Obsessed with AI breakthroughs & cutting-edge tech. My brain? Always running at full speed. My goal? Travel the world and see every corner of this planet. I don't follow trends. I create my own path.</p>
+            </div>
+        </section>
+    </main>
+    
+    <script src="assets/main.js"></script>
+</body>
+</html>
