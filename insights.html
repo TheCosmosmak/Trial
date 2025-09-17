@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PK | Tech Insights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-jp">ピユシュ</a>
+            <nav class="main-nav">
+                <a href="index.html">/home</a>
+                <a href="oracle.html">/oracle</a>
+                <a href="manga.html">/manga</a>
+                <a href="insights.html" class="active">/insights</a>
+                <a href="ai_innovations.html">/innovations</a>
+                <a href="timelapse.html">/timelapse</a>
+                <a href="mindset.html">/mindset</a>
+            </nav>
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobile-menu">
+        <a href="index.html">/home</a>
+        <a href="oracle.html">/oracle</a>
+        <a href="manga.html">/manga</a>
+        <a href="insights.html" class="active">/insights</a>
+        <a href="ai_innovations.html">/innovations</a>
+        <a href="timelapse.html">/timelapse</a>
+        <a href="mindset.html">/mindset</a>
+    </nav>
+
+    <main class="page-main container">
+        <h1 class="page-title">AI-Generated Insights // <span class="accent-text">洞察</span></h1>
+        <div class="controls-container">
+            <p class="mb-4">Choose a topic to explore:</p>
+            <div class="topic-buttons">
+                <button class="btn-manga topic-btn" data-topic="Quantum Computing">Quantum Computing</button>
+                <button class="btn-manga topic-btn" data-topic="The Ethics of Artificial General Intelligence">AGI Ethics</button>
+                <button class="btn-manga topic-btn" data-topic="The Future of Genetic Engineering">Genetic Engineering</button>
+                <button class="btn-manga topic-btn" data-topic="Decentralized Autonomous Organizations">DAOs</button>
+            </div>
+        </div>
+        <div id="loader" class="loader-container" style="display: none;">
+            <div class="loader"></div>
+            <p>Generating Insights...</p>
+        </div>
+        <div id="articles-container">
+            </div>
+    </main>
+    
+    <script src="assets/main.js"></script>
+</body>
+</html>
