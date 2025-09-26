@@ -98,6 +98,37 @@
             grid-template-columns: repeat(12, 1fr);
             gap: 1.5rem;
         }
+
+        .neon-text {
+            color: #fff;
+            text-shadow:
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #8A2BE2,
+                0 0 82px #8A2BE2,
+                0 0 92px #8A2BE2,
+                0 0 102px #8A2BE2,
+                0 0 151px #8A2BE2;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                    0 0 4px #fff,
+                    0 0 11px #fff,
+                    0 0 19px #fff,
+                    0 0 40px #8A2BE2,
+                    0 0 80px #8A2BE2,
+                    0 0 90px #8A2BE2,
+                    0 0 100px #8A2BE2,
+                    0 0 150px #8A2BE2;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
@@ -136,6 +167,7 @@
     <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden p-4">
         <canvas id="ghibli-canvas"></canvas>
         <div class="hero-content text-center panel p-8" data-aos="fade-up">
+            <h2 class="text-2xl md:text-4xl font-bold neon-text">Piyush presents</h2>
             <h1 class="text-5xl md:text-7xl font-bold font-jp">The AI Alchemist's Lab</h1>
             <p class="mt-4 text-xl md:text-2xl">A Fusion of Code & Creativity <span class="accent-text"> // </span> 錬金術師</p>
             <p class="mt-2 text-gray-600">Forging ideas, stories, and art with artificial intelligence.</p>
