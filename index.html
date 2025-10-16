@@ -100,7 +100,7 @@
         }
 
         .neon-text {
-            color: #fff;
+            color: #f0f0f0;
             text-shadow:
                 0 0 7px #fff,
                 0 0 10px #fff,
@@ -350,12 +350,12 @@
         }
 
         async function callGemini(payload) {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
             return makeApiCall(apiUrl, payload);
         }
 
         async function generateImage(prompt) {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${API_KEY}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${API_KEY}`;
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
                 generationConfig: { responseModalities: ['TEXT', 'IMAGE'] },
@@ -439,4 +439,3 @@
     </script>
 </body>
 </html>
-

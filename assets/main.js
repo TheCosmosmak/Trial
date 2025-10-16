@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- API Key ---
     // Security Warning: Best practice is to handle API keys on a server, not client-side.
-    const API_KEY = 'AIzaSyB_nQXP8e31gIPRl_TWG9Vr31USM7QypgU';
+    const API_KEY = 'AIzaSyAIZrt4ZaWsj8PJPTSSCuf16qA8HWz9RJY';
 
     // --- SHARED API FETCH FUNCTION ---
     async function fetchWithBackoff(apiUrl, payload, retries = 3, delay = 1000) {
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const callGemini = async (prompt) => {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
             const payload = { contents: [{ parts: [{ text: `You are an AI oracle with a modern, Gen-Z vibe. Answer concisely and directly. User asks: "${prompt}"` }] }] };
             const result = await fetchWithBackoff(apiUrl, payload);
             if (result && result.candidates && result.candidates[0].content.parts[0].text) {
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             articlesContainer.innerHTML = '';
             loader.style.display = 'block';
             const prompt = `Write a concise and engaging article (about 100 words) for a tech enthusiast about the future of ${topic}. Format as clean HTML with simple p and b tags.`;
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
             const payload = { contents: [{ parts: [{ text: prompt }] }] };
             const result = await fetchWithBackoff(apiUrl, payload);
             loader.style.display = 'none';
