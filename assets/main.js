@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const callGemini = async (prompt) => {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${API_KEY}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
             const payload = { contents: [{ parts: [{ text: `You are an AI oracle with a modern, Gen-Z vibe. Answer concisely and directly. User asks: "${prompt}"` }] }] };
             const result = await fetchWithBackoff(apiUrl, payload);
             if (result && result.candidates && result.candidates[0].content.parts[0].text) {
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             articlesContainer.innerHTML = '';
             loader.style.display = 'block';
             const prompt = `Write a concise and engaging article (about 100 words) for a tech enthusiast about the future of ${topic}. Format as clean HTML with simple p and b tags.`;
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
             const payload = { contents: [{ parts: [{ text: prompt }] }] };
             const result = await fetchWithBackoff(apiUrl, payload);
             loader.style.display = 'none';
