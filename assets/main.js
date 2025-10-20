@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const callGemini = async (prompt) => {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-latest:generateContent?key=${API_KEY}`;
             const payload = { contents: [{ parts: [{ text: `You are an AI oracle with a modern, Gen-Z vibe. Answer concisely and directly. User asks: "${prompt}"` }] }] };
             const result = await fetchWithBackoff(apiUrl, payload);
             if (result && result.candidates && result.candidates[0].content.parts[0].text) {
