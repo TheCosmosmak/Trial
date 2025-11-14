@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PK | Tech Insights</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
 </head>
-<body class="bg-gray-100 text-gray-900">
-
+<body>
     <header class="main-header">
         <div class="header-container">
             <a href="index.html" class="logo-jp">ピユシュ</a>
@@ -22,7 +19,6 @@
                 <a href="ai_innovations.html">/innovations</a>
                 <a href="timelapse.html">/timelapse</a>
                 <a href="mindset.html">/mindset</a>
-                <a href="geography.html">/geography</a>
             </nav>
             <button class="mobile-nav-toggle" id="mobile-nav-toggle">
                 <span class="icon-bar"></span>
@@ -40,107 +36,27 @@
         <a href="ai_innovations.html">/innovations</a>
         <a href="timelapse.html">/timelapse</a>
         <a href="mindset.html">/mindset</a>
-        <a href="geography.html">/geography</a>
     </nav>
 
-
     <main class="page-main container">
-        <section id="insights-search" class="my-12">
-            <h1 class="font-jp text-4xl font-bold mb-8 text-center">Get to know about the latest breakthrough in A.I technology</h1>
-            <div class="max-w-2xl mx-auto">
-                <div class="flex items-center gap-2 panel p-2">
-                    <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                    <input type="text" id="topic-input" placeholder="enter your topic" class="w-full p-2 bg-transparent uppercase focus:outline-none">
-                    <button id="get-answer-btn" class="btn-manga whitespace-nowrap">Get Insight</button>
-                </div>
+        <h1 class="page-title">AI-Generated Insights // <span class="accent-text">洞察</span></h1>
+        <div class="controls-container">
+            <p class="mb-4">Choose a topic to explore:</p>
+            <div class="topic-buttons">
+                <button class="btn-manga topic-btn" data-topic="Quantum Computing">Quantum Computing</button>
+                <button class="btn-manga topic-btn" data-topic="The Ethics of Artificial General Intelligence">AGI Ethics</button>
+                <button class="btn-manga topic-btn" data-topic="The Future of Genetic Engineering">Genetic Engineering</button>
+                <button class="btn-manga topic-btn" data-topic="Decentralized Autonomous Organizations">DAOs</button>
             </div>
-        </section>
-
-        <section id="answer-container" class="my-12" data-aos="fade-up">
-            <div id="answer-content" class="panel p-8 max-w-3xl mx-auto hidden">
-                <!-- AI-generated answer will be displayed here -->
-            </div>
-        </section>
-    </main>
-
-    <div id="ai-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[100] opacity-0 pointer-events-none">
-        <div class="modal-content bg-white p-6 max-w-2xl w-full transform scale-95">
-            <h3 id="modal-title" class="font-jp text-2xl font-bold mb-4"></h3>
-            <div id="modal-body" class="text-gray-800 max-h-[60vh] overflow-y-auto"></div>
-            <button id="modal-close" class="btn-manga mt-6">Close</button>
         </div>
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <div id="loader" class="loader-container" style="display: none;">
+            <div class="loader"></div>
+            <p>Generating Insights...</p>
+        </div>
+        <div id="articles-container">
+            </div>
+    </main>
+    
     <script src="assets/main.js"></script>
-    <script type="module">
-        AOS.init({ duration: 800, once: true, offset: 50 });
-        const API_KEY = "AIzaSyAIZrt4ZaWsj8PJPTSSCuf16qA8HWz9RJY";
-
-        const getAnswerBtn = document.getElementById('get-answer-btn');
-        const topicInput = document.getElementById('topic-input');
-        const answerContent = document.getElementById('answer-content');
-        const modal = document.getElementById('ai-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalBody = document.getElementById('modal-body');
-        const modalCloseBtn = document.getElementById('modal-close');
-
-        function showModal(title, content) {
-            modalTitle.textContent = title;
-            modalBody.innerHTML = content;
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.querySelector('.modal-content').classList.remove('scale-95');
-        }
-
-        function hideModal() {
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modal.querySelector('.modal-content').classList.add('scale-95');
-        }
-
-        modalCloseBtn.addEventListener('click', hideModal);
-        modal.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
-
-        async function makeApiCall(apiUrl, payload) {
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (!response.ok) {
-                    const errorBody = await response.json();
-                    throw new Error(`API Error: ${errorBody.error.message}`);
-                }
-                return await response.json();
-            } catch (error) {
-                console.error("API Call Failed:", error);
-                throw error;
-            }
-        }
-
-        async function callGemini(payload) {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
-            return makeApiCall(apiUrl, payload);
-        }
-
-        getAnswerBtn.addEventListener('click', async () => {
-            const topic = topicInput.value.trim();
-            if (!topic) {
-                showModal('Error', 'Please enter a topic.');
-                return;
-            }
-            showModal(`Generating insight on ${topic}...`, '<div class="loader mx-auto"></div>');
-            const prompt = `Provide a concise and informative insight on the topic: "${topic}". Structure the response in clean HTML using p, h3, and ul/li tags. Start with a brief definition, then provide a few key insights or implications.`;
-            try {
-                const result = await callGemini({ contents: [{ parts: [{ text: prompt }] }] });
-                const text = result.candidates[0].content.parts[0].text;
-                answerContent.innerHTML = text.replace(/\n/g, '<br>');
-                answerContent.classList.remove('hidden');
-                hideModal();
-            } catch (error) {
-                showModal('API Error', `Couldn't fetch the data. ${error.message}`);
-            }
-        });
-    </script>
 </body>
 </html>
