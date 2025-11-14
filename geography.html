@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geography - The Oracular Mind</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-jp">ピユシュ</a>
+            <nav class="main-nav">
+                <a href="index.html">/home</a>
+                <a href="oracle.html">/oracle</a>
+                <a href="manga.html">/manga</a>
+                <a href="insights.html">/insights</a>
+                <a href="ai_innovations.html">/innovations</a>
+                <a href="timelapse.html">/timelapse</a>
+                <a href="mindset.html">/mindset</a>
+                <a href="geography.html" class="active">/geography</a>
+            </nav>
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobile-menu">
+        <a href="index.html">/home</a>
+        <a href="oracle.html">/oracle</a>
+        <a href="manga.html">/manga</a>
+        <a href="insights.html">/insights</a>
+        <a href="ai_innovations.html">/innovations</a>
+        <a href="timelapse.html">/timelapse</a>
+        <a href="mindset.html">/mindset</a>
+        <a href="geography.html" class="active">/geography</a>
+    </nav>
+    <main class="page-main container">
+        <h1 class="page-title">Geography // <span class="accent-text">地理</span></h1>
+        <div class="panel">
+            <div id="globe-container" style="position: relative;"></div>
+        </div>
+        <div class="panel">
+            <section id="quiz-container">
+                <h2>Geography Quiz</h2>
+                <div id="quiz"></div>
+                <button id="submit-quiz" class="btn-manga">Submit Answers</button>
+                <p id="quiz-results"></p>
+            </section>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="assets/questions.js"></script>
+    <script src="assets/geography.js"></script>
+</body>
+</html>
