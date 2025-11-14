@@ -98,6 +98,37 @@
             grid-template-columns: repeat(12, 1fr);
             gap: 1.5rem;
         }
+
+        .neon-text {
+            color: #f0f0f0;
+            text-shadow:
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #8A2BE2,
+                0 0 82px #8A2BE2,
+                0 0 92px #8A2BE2,
+                0 0 102px #8A2BE2,
+                0 0 151px #8A2BE2;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow:
+                    0 0 4px #fff,
+                    0 0 11px #fff,
+                    0 0 19px #fff,
+                    0 0 40px #8A2BE2,
+                    0 0 80px #8A2BE2,
+                    0 0 90px #8A2BE2,
+                    0 0 100px #8A2BE2,
+                    0 0 150px #8A2BE2;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-900">
@@ -114,6 +145,7 @@
                 <a href="ai_innovations.html" class="hover:text-purple-600 transition-colors">/innovations</a>
                 <a href="timelapse.html" class="hover:text-purple-600 transition-colors">/timelapse</a>
                 <a href="mindset.html" class="hover:text-purple-600 transition-colors">/mindset</a>
+                <a href="geography.html" class="hover:text-purple-600 transition-colors">/geography</a>
             </nav>
 
             <button id="mobile-menu-button" class="md:hidden p-2">
@@ -129,28 +161,28 @@
         <a href="oracle.html" class="hover:text-purple-600">/oracle</a>
         <a href="manga.html" class="hover:text-purple-600">/manga</a>
         <a href="insights.html" class="hover:text-purple-600">/insights</a>
-        <a href="ai_innovations.html" class="hover:text-purple-600">/innovations</a>
-        <a href="timelapse.html" class="hover:text-purple-600">/timelapse</a>
-        <a href="mindset.html" class="hover:text-purple-600">/mindset</a>
+        <a href="library.html" class="hover:text-purple-600">/library</a>
+        <a href="geography.html" class="hover:text-purple-600">/geography</a>
     </nav>
 
 
     <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden p-4">
         <canvas id="ghibli-canvas"></canvas>
         <div class="hero-content text-center panel p-8" data-aos="fade-up">
-            <h1 class="text-5xl md:text-7xl font-bold font-jp">Piyush Kumar</h1>
-            <p class="mt-4 text-xl md:text-2xl">Digital Alchemist & Future Nomad <span class="accent-text"> // </span> 錬金術師</p>
-            <p class="mt-2 text-gray-600">leveling up in tech & plotting world domination (the friendly kind).</p>
+            <h2 class="text-2xl md:text-4xl font-bold neon-text">Piyush presents</h2>
+            <h1 class="text-5xl md:text-7xl font-bold font-jp">The AI Alchemist's Lab</h1>
+            <p class="mt-4 text-xl md:text-2xl">A Fusion of Code & Creativity <span class="accent-text"> // </span> 錬金術師</p>
+            <p class="mt-2 text-gray-600">Forging ideas, stories, and art with artificial intelligence.</p>
         </div>
     </section>
 
     <main class="container mx-auto p-4 md:p-8">
         <section id="about" class="manga-grid my-20">
             <div class="col-span-12 md:col-span-7 panel p-8" data-aos="fade-right">
-                <h2 class="font-jp text-4xl font-bold mb-4">Chapter 1: The Grind.</h2>
+                <h2 class="font-jp text-4xl font-bold mb-4">Enter the Lab.</h2>
                 <div class="space-y-4 text-lg">
-                    <p>Currently solo-leveling, hard-wired into the tech matrix. My brain's got too many tabs open, always. I vibe with code, not with people who cap their own potential.</p>
-                    <p>The main quest? Hit my 20s, cop enough XP (and cash), and then just <span class="accent-text">dip</span>. See the whole map, IRL. From the neon streets of Tokyo to the mountains of Peru. No cap.</p>
+                    <p>Welcome. This isn't just a portfolio; it's a digital laboratory. Here, I collaborate with AI, treating it as a partner to explore new frontiers of creativity.</p>
+                    <p>My main quest? To fuse human ingenuity with machine intelligence and see what's possible. Everything you see here is an experiment in that fusion.</p>
                 </div>
             </div>
             <div class="col-span-12 md:col-span-5 panel flex items-center justify-center p-8" data-aos="fade-left">
@@ -159,7 +191,7 @@
         </section>
 
         <section id="projects" class="my-20">
-            <h2 class="font-jp text-4xl font-bold mb-8 text-center" data-aos="fade-up">AI Experiments // <span class="accent-text">プロジェクト</span></h2>
+            <h2 class="font-jp text-4xl font-bold mb-8 text-center" data-aos="fade-up">Core Exhibits // <span class="accent-text">プロジェクト</span></h2>
             <div class="manga-grid">
                 <div class="col-span-12 md:col-span-6 panel p-6" data-aos="fade-right">
                     <h3 class="font-bold text-2xl mb-4">Market Pulse AI</h3>
@@ -182,9 +214,9 @@
 
         <section id="contact" class="my-20 text-center">
              <div class="panel p-8 max-w-3xl mx-auto" data-aos="zoom-in">
-                <h2 class="font-jp text-4xl font-bold mb-4">End of the Chapter. For Now.</h2>
-                <p class="text-lg mb-6">If you're building cool stuff or just wanna chat about the future, hit me up. Let's connect.</p>
-                <a href="mailto:hello@piyush.dev" class="btn-manga inline-block">Say Hello</a>
+                <h2 class="font-jp text-4xl font-bold mb-4">Start a Collaboration.</h2>
+                <p class="text-lg mb-6">Have an idea that could use a spark of AI? Intrigued by the process? Let's connect and build something new.</p>
+                <a href="mailto:cosmospiyush.dev@gmail.com" class="btn-manga inline-block">Say Hello</a>
              </div>
         </section>
     </main>
@@ -202,7 +234,7 @@
         // ===================================================================================
         // --- INITIALIZATION & SETUP ---
         // ===================================================================================
-        const API_KEY = "AIzaSyCDBlc1A1h_XfAzFyx49FPUQDXP7nSxHXI";
+        const API_KEY = "AIzaSyAIZrt4ZaWsj8PJPTSSCuf16qA8HWz9RJY";
         AOS.init({ duration: 800, once: true, offset: 50 });
 
         // ===================================================================================
@@ -325,7 +357,7 @@
         }
 
         async function generateImage(prompt) {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${API_KEY}`;
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${API_KEY}`;
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
                 generationConfig: { responseModalities: ['TEXT', 'IMAGE'] },
@@ -409,7 +441,3 @@
     </script>
 </body>
 </html>
-
-
-
-
