@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piyush Kumar | Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Yuji+Syuku&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Yuji+Syuku&display=swap"
+        rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Roboto Mono', monospace; 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
             background-color: #F0F0F0;
             color: #1a1a1a;
         }
-        .font-jp { font-family: 'Yuji Syuku', serif; }
+
+        .font-jp {
+            font-family: 'Yuji Syuku', serif;
+        }
 
         /* Manga Panel Styling */
         .panel {
@@ -23,6 +31,7 @@
             background-color: #ffffff;
             position: relative;
         }
+
         .panel::before {
             content: '';
             position: absolute;
@@ -30,13 +39,11 @@
             left: 4px;
             right: -4px;
             bottom: -4px;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(0,0,0,0.05),
-                rgba(0,0,0,0.05) 2px,
-                transparent 2px,
-                transparent 5px
-            );
+            background: repeating-linear-gradient(45deg,
+                    rgba(0, 0, 0, 0.05),
+                    rgba(0, 0, 0, 0.05) 2px,
+                    transparent 2px,
+                    transparent 5px);
             z-index: -1;
             border: 2px solid #1a1a1a;
         }
@@ -53,6 +60,7 @@
             overflow: hidden;
             z-index: 1;
         }
+
         .btn-manga::after {
             content: '';
             position: absolute;
@@ -60,21 +68,26 @@
             top: 0;
             height: 100%;
             width: 100%;
-            background-color: #8A2BE2; /* Accent Color: BlueViolet */
+            background-color: #8A2BE2;
+            /* Accent Color: BlueViolet */
             z-index: -1;
             transform: scaleX(0);
             transform-origin: right;
             transition: transform 0.3s ease-in-out;
         }
+
         .btn-manga:hover::after {
             transform: scaleX(1);
             transform-origin: left;
         }
+
         .btn-manga:hover {
             color: #ffffff;
         }
 
-        .accent-text { color: #8A2BE2; }
+        .accent-text {
+            color: #8A2BE2;
+        }
 
         /* WebGL Canvas */
         #ghibli-canvas {
@@ -85,21 +98,89 @@
             height: 100%;
             z-index: 0;
         }
-        .hero-content { position: relative; z-index: 1; }
 
-        .modal { transition: opacity 0.25s ease; }
-        .modal-content { transition: transform 0.25s ease; border: 2px solid #1a1a1a;}
-        
-        .loader { border: 4px solid #cccccc; border-top: 4px solid #8A2BE2; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+
+        .modal-content {
+            transition: transform 0.25s ease;
+            border: 2px solid #1a1a1a;
+        }
+
+        .loader {
+            border: 4px solid #cccccc;
+            border-top: 4px solid #8A2BE2;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         .manga-grid {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 1.5rem;
         }
+
+        .neon-text {
+            color: #f0f0f0;
+            text-shadow:
+                0 0 7px #fff,
+                0 0 10px #fff,
+                0 0 21px #fff,
+                0 0 42px #8A2BE2,
+                0 0 82px #8A2BE2,
+                0 0 92px #8A2BE2,
+                0 0 102px #8A2BE2,
+                0 0 151px #8A2BE2;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+
+            0%,
+            18%,
+            22%,
+            25%,
+            53%,
+            57%,
+            100% {
+                text-shadow:
+                    0 0 4px #fff,
+                    0 0 11px #fff,
+                    0 0 19px #fff,
+                    0 0 40px #8A2BE2,
+                    0 0 80px #8A2BE2,
+                    0 0 90px #8A2BE2,
+                    0 0 100px #8A2BE2,
+                    0 0 150px #8A2BE2;
+            }
+
+            20%,
+            24%,
+            55% {
+                text-shadow: none;
+            }
+        }
     </style>
 </head>
+
 <body class="bg-gray-100 text-gray-900">
 
     <header class="fixed w-full p-4 z-[60] bg-gray-100/80 backdrop-blur-sm">
@@ -114,6 +195,7 @@
                 <a href="ai_innovations.html" class="hover:text-purple-600 transition-colors">/innovations</a>
                 <a href="timelapse.html" class="hover:text-purple-600 transition-colors">/timelapse</a>
                 <a href="mindset.html" class="hover:text-purple-600 transition-colors">/mindset</a>
+                <a href="geography.html" class="hover:text-purple-600 transition-colors">/geography</a>
             </nav>
 
             <button id="mobile-menu-button" class="md:hidden p-2">
@@ -124,48 +206,56 @@
         </div>
     </header>
 
-    <nav id="mobile-menu" class="hidden fixed inset-0 bg-gray-100 z-50 flex flex-col items-center justify-center space-y-8 text-2xl font-bold">
+    <nav id="mobile-menu"
+        class="hidden fixed inset-0 bg-gray-100 z-50 flex flex-col items-center justify-center space-y-8 text-2xl font-bold">
         <a href="index.html" class="text-purple-600">/home</a>
         <a href="oracle.html" class="hover:text-purple-600">/oracle</a>
         <a href="manga.html" class="hover:text-purple-600">/manga</a>
         <a href="insights.html" class="hover:text-purple-600">/insights</a>
-        <a href="ai_innovations.html" class="hover:text-purple-600">/innovations</a>
-        <a href="timelapse.html" class="hover:text-purple-600">/timelapse</a>
-        <a href="mindset.html" class="hover:text-purple-600">/mindset</a>
+        <a href="library.html" class="hover:text-purple-600">/library</a>
+        <a href="geography.html" class="hover:text-purple-600">/geography</a>
     </nav>
 
 
     <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden p-4">
         <canvas id="ghibli-canvas"></canvas>
         <div class="hero-content text-center panel p-8" data-aos="fade-up">
-            <h1 class="text-5xl md:text-7xl font-bold font-jp">Piyush Kumar</h1>
-            <p class="mt-4 text-xl md:text-2xl">Digital Alchemist & Future Nomad <span class="accent-text"> // </span> 錬金術師</p>
-            <p class="mt-2 text-gray-600">leveling up in tech & plotting world domination (the friendly kind).</p>
+            <h2 class="text-2xl md:text-4xl font-bold neon-text">Piyush presents</h2>
+            <h1 class="text-5xl md:text-7xl font-bold font-jp">The AI Alchemist's Lab</h1>
+            <p class="mt-4 text-xl md:text-2xl">A Fusion of Code & Creativity <span class="accent-text"> // </span> 錬金術師
+            </p>
+            <p class="mt-2 text-gray-600">Forging ideas, stories, and art with artificial intelligence.</p>
         </div>
     </section>
 
     <main class="container mx-auto p-4 md:p-8">
         <section id="about" class="manga-grid my-20">
             <div class="col-span-12 md:col-span-7 panel p-8" data-aos="fade-right">
-                <h2 class="font-jp text-4xl font-bold mb-4">Chapter 1: The Grind.</h2>
+                <h2 class="font-jp text-4xl font-bold mb-4">Enter the Lab.</h2>
                 <div class="space-y-4 text-lg">
-                    <p>Currently solo-leveling, hard-wired into the tech matrix. My brain's got too many tabs open, always. I vibe with code, not with people who cap their own potential.</p>
-                    <p>The main quest? Hit my 20s, cop enough XP (and cash), and then just <span class="accent-text">dip</span>. See the whole map, IRL. From the neon streets of Tokyo to the mountains of Peru. No cap.</p>
+                    <p>Welcome. This isn't just a portfolio; it's a digital laboratory. Here, I collaborate with AI,
+                        treating it as a partner to explore new frontiers of creativity.</p>
+                    <p>My main quest? To fuse human ingenuity with machine intelligence and see what's possible.
+                        Everything you see here is an experiment in that fusion.</p>
                 </div>
             </div>
             <div class="col-span-12 md:col-span-5 panel flex items-center justify-center p-8" data-aos="fade-left">
-                 <img src="assets/portrait.png" alt="A portrait of Piyush Kumar" class="w-full h-auto object-cover" style="border: 2px solid #1a1a1a;">
+                <img src="assets/portrait.png" alt="A portrait of Piyush Kumar" class="w-full h-auto object-cover"
+                    style="border: 2px solid #1a1a1a;">
             </div>
         </section>
 
         <section id="projects" class="my-20">
-            <h2 class="font-jp text-4xl font-bold mb-8 text-center" data-aos="fade-up">AI Experiments // <span class="accent-text">プロジェクト</span></h2>
+            <h2 class="font-jp text-4xl font-bold mb-8 text-center" data-aos="fade-up">Core Exhibits // <span
+                    class="accent-text">プロジェクト</span></h2>
             <div class="manga-grid">
                 <div class="col-span-12 md:col-span-6 panel p-6" data-aos="fade-right">
                     <h3 class="font-bold text-2xl mb-4">Market Pulse AI</h3>
-                    <p class="mb-4">Drop a stock ticker. Get the tea, AI-style. No financial advice, just the data vibes.</p>
+                    <p class="mb-4">Drop a stock ticker. Get the tea, AI-style. No financial advice, just the data
+                        vibes.</p>
                     <div class="flex gap-2">
-                        <input type="text" id="stock-ticker-prompt" placeholder="e.g., NVDA" class="w-full p-2 border-2 border-gray-900 bg-transparent uppercase focus:outline-none focus:border-purple-600">
+                        <input type="text" id="stock-ticker-prompt" placeholder="e.g., NVDA"
+                            class="w-full p-2 border-2 border-gray-900 bg-transparent uppercase focus:outline-none focus:border-purple-600">
                         <button id="get-analysis-btn" class="btn-manga whitespace-nowrap">Get Analysis</button>
                     </div>
                 </div>
@@ -173,7 +263,8 @@
                     <h3 class="font-bold text-2xl mb-4">Manga Studio AI</h3>
                     <p class="mb-4">Describe a scene. I'll make it art. Think ink, splash, and style.</p>
                     <div class="flex gap-2">
-                         <input type="text" id="image-prompt" placeholder="e.g., samurai warrior in a neon-lit alley" class="w-full p-2 border-2 border-gray-900 bg-transparent focus:outline-none focus:border-purple-600">
+                        <input type="text" id="image-prompt" placeholder="e.g., samurai warrior in a neon-lit alley"
+                            class="w-full p-2 border-2 border-gray-900 bg-transparent focus:outline-none focus:border-purple-600">
                         <button id="generate-image-btn" class="btn-manga whitespace-nowrap">Generate</button>
                     </div>
                 </div>
@@ -181,15 +272,17 @@
         </section>
 
         <section id="contact" class="my-20 text-center">
-             <div class="panel p-8 max-w-3xl mx-auto" data-aos="zoom-in">
-                <h2 class="font-jp text-4xl font-bold mb-4">End of the Chapter. For Now.</h2>
-                <p class="text-lg mb-6">If you're building cool stuff or just wanna chat about the future, hit me up. Let's connect.</p>
-                <a href="mailto:grizzlybebear4@gmail.com" class="btn-manga inline-block">Say Hello</a>
-             </div>
+            <div class="panel p-8 max-w-3xl mx-auto" data-aos="zoom-in">
+                <h2 class="font-jp text-4xl font-bold mb-4">Start a Collaboration.</h2>
+                <p class="text-lg mb-6">Have an idea that could use a spark of AI? Intrigued by the process? Let's
+                    connect and build something new.</p>
+                <a href="mailto:cosmospiyush.dev@gmail.com" class="btn-manga inline-block">Say Hello</a>
+            </div>
         </section>
     </main>
 
-    <div id="ai-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[100] opacity-0 pointer-events-none">
+    <div id="ai-modal"
+        class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-[100] opacity-0 pointer-events-none">
         <div class="modal-content bg-white p-6 max-w-2xl w-full transform scale-95">
             <h3 id="modal-title" class="font-jp text-2xl font-bold mb-4"></h3>
             <div id="modal-body" class="text-gray-800 max-h-[60vh] overflow-y-auto"></div>
@@ -198,11 +291,11 @@
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/ai.js"></script>
     <script type="module">
         // ===================================================================================
         // --- INITIALIZATION & SETUP ---
         // ===================================================================================
-        const API_KEY = "AIzaSyB_nQXP8e31gIPRl_TWG9Vr31USM7QypgU";
         AOS.init({ duration: 800, once: true, offset: 50 });
 
         // ===================================================================================
@@ -251,7 +344,7 @@
             const particle = new THREE.Sprite(particleMaterial.clone());
             const scale = Math.random() * 4 + 1;
             particle.scale.set(scale, scale, scale);
-            
+
             particle.position.set(
                 (Math.random() - 0.5) * 15,
                 (Math.random() - 0.5) * 10,
@@ -298,115 +391,7 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // ===================================================================================
-        // --- AI API FUNCTIONS ---
-        // ===================================================================================
-        async function makeApiCall(apiUrl, payload) {
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (!response.ok) {
-                    const errorBody = await response.json();
-                    throw new Error(`API Error: ${errorBody.error.message}`);
-                }
-                return await response.json();
-            } catch (error) {
-                console.error("API Call Failed:", error);
-                throw error;
-            }
-        }
-
-        async function callGemini(payload) {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${API_KEY}`;
-            return makeApiCall(apiUrl, payload);
-        }
-
-        async function generateImage(prompt) {
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=${API_KEY}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: { responseModalities: ['TEXT', 'IMAGE'] },
-            };
-            return makeApiCall(apiUrl, payload);
-        }
-
-        // ===================================================================================
-        // --- MODAL LOGIC ---
-        // ===================================================================================
-        const modal = document.getElementById('ai-modal');
-        const modalTitle = document.getElementById('modal-title');
-        const modalBody = document.getElementById('modal-body');
-        const modalCloseBtn = document.getElementById('modal-close');
-
-        function showModal(title, content) {
-            modalTitle.textContent = title;
-            modalBody.innerHTML = content;
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.querySelector('.modal-content').classList.remove('scale-95');
-        }
-
-        function hideModal() {
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            modal.querySelector('.modal-content').classList.add('scale-95');
-        }
-
-        modalCloseBtn.addEventListener('click', hideModal);
-        modal.addEventListener('click', (e) => { if (e.target === modal) hideModal(); });
-        
-        // ===================================================================================
-        // --- PROJECT: MARKET PULSE ---
-        // ===================================================================================
-        const getAnalysisBtn = document.getElementById('get-analysis-btn');
-        const stockTickerInput = document.getElementById('stock-ticker-prompt');
-
-        getAnalysisBtn.addEventListener('click', async () => {
-            const ticker = stockTickerInput.value.trim().toUpperCase();
-            if (!ticker) {
-                showModal('Error', 'You gotta give me a ticker, fam.');
-                return;
-            }
-            showModal(`Analyzing ${ticker}...`, '<div class="loader mx-auto"></div>');
-            const prompt = `You are an AI financial analyst with a Gen Z vibe. Give me a quick, no-BS rundown of the stock ticker "${ticker}". Keep it real, no jargon. Format it as clean HTML with simple p and b tags. Sections: **The Lowdown:** (what the company does), **The Vibe:** (recent performance/news), **The Numbers:** (key metrics like P/E), **The Bet:** (general outlook, risks/catalysts).`;
-            try {
-                const result = await callGemini({ contents: [{ parts: [{ text: prompt }] }] });
-                const text = result.candidates[0].content.parts[0].text;
-                showModal(`The Tea on ${ticker}`, text.replace(/\n/g, '<br>'));
-            } catch (error) {
-                showModal('API Error', `Couldn't fetch the data. ${error.message}`);
-            }
-        });
-
-        // ===================================================================================
-        // --- PROJECT: MANGA STUDIO ---
-        // ===================================================================================
-        const generateImageBtn = document.getElementById('generate-image-btn');
-        const imagePromptInput = document.getElementById('image-prompt');
-
-        generateImageBtn.addEventListener('click', async () => {
-            const userPrompt = imagePromptInput.value.trim();
-            if (!userPrompt) {
-                showModal('Error', 'Describe the masterpiece you want me to create.');
-                return;
-            }
-            showModal('Generating Art...', '<div class="loader mx-auto"></div>');
-            const fullPrompt = `Create an image in a striking black and white manga style, with heavy ink strokes and screentone patterns for shading. Use a single, vibrant accent color (#8A2BE2) for one key element. The scene is: "${userPrompt}"`;
-            try {
-                const result = await generateImage(fullPrompt);
-                const base64Data = result?.candidates?.[0]?.content?.parts?.find(p => p.inlineData)?.inlineData?.data;
-                if (base64Data) {
-                    showModal('Manga Studio AI', `<img src="data:image/png;base64,${base64Data}" class="w-full h-auto" alt="AI generated manga image">`);
-                } else {
-                    throw new Error("Image data not found in response. The prompt might have been blocked.");
-                }
-            } catch (error) {
-                showModal('API Error', `Couldn't generate the image. ${error.message}`);
-            }
-        });
-
     </script>
 </body>
-</html>
 
+</html>
